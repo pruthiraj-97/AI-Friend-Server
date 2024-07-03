@@ -1,7 +1,7 @@
 const userSchema =require( '../models/user.model')
 const messageSchema =require( '../models/message')
 const conversationSchema =require( '../models/conversation')
-const { AiMessage }=require('../utils/Aimessage')
+const { AiMessage }=require('../utils/AiMessage')
  async function createConversation(req,res){
     try {
     const user=req.user
