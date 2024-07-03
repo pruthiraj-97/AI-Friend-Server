@@ -13,6 +13,7 @@ const { AiMessage }=require('../utils/AiMessage')
             conversations:newConversation
         }
     })
+    console.log("new conversation created")
     return res.json({status:200,
         success:true,
         conversation:newConversation
