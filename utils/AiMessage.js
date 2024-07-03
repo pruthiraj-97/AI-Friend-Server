@@ -19,11 +19,10 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-async function AiMessage(message) {
+async function AiMessage(message,History) {
   const chatSession = model.startChat({
     generationConfig,
-    history: [
-    ],
+    history: [],
   });
 
   const result = await chatSession.sendMessage(message);

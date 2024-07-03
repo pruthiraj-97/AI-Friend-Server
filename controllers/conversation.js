@@ -2,6 +2,7 @@ const userSchema =require( '../models/user.model')
 const messageSchema =require( '../models/message')
 const conversationSchema =require( '../models/conversation')
 const { AiMessage }=require('../utils/AiMessage')
+const { HistoryMessage }=require('../utils/histroryMessage')
  async function createConversation(req,res){
     try {
     const user=req.user
@@ -39,7 +40,8 @@ const { AiMessage }=require('../utils/AiMessage')
                 message:"Enter all the fields"
             })
         }
-        const AiResponse=await AiMessage(message)
+        const History=await HistoryMessage(id)
+        const AiResponse=await AiMessage(message,History)
         const newMessage=await messageSchema.create({
             usermessage:message,
             botmessage:AiResponse,

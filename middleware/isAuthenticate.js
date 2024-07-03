@@ -5,7 +5,8 @@ function isAuthenticate(req,res,next){
     if(!token){
         return res.status(401).json({error:"please authenticate using a valid token"})
     }
-    const payload=jwt.verify(token,process.env.jwt_SECRET,(error,decoded)=>{
+    
+    jwt.verify(token,process.env.jwt_SECRET,(error,decoded)=>{
              if(error){
                 return res.status(401).json({
                     status:401,
