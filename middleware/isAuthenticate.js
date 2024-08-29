@@ -14,7 +14,9 @@ function isAuthenticate(req,res,next){
                     message:'Token Expair'
                 })
              }
-             req.user=decoded
+             else{
+                req.user=decoded
+             }
         })       
     next()
     } catch (error) {
