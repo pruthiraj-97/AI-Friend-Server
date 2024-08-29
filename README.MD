@@ -83,13 +83,6 @@ This AI Assistant offers a highly personalized user experience by remembering an
 
 We welcome contributions! Please submit pull requests or report issues to help improve the AI Assistant.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or feedback, please contact [your-email@example.com](mailto:your-email@example.com).
 
 ---
 
