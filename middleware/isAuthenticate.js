@@ -20,8 +20,10 @@ function isAuthenticate(req,res,next){
         })       
     next()
     } catch (error) {
-          return res.status(500).json({
-            message:error
+        return res.status(401).json({
+            status:401,
+            success:false,
+            message:'Token Expair'
         })
         }
     }
