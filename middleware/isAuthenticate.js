@@ -1,6 +1,7 @@
 const jwt=require('jsonwebtoken')
 async function isAuthenticate(req,res,next){
-        const token=req.header['x-access-token']
+    const token = req.headers['x-access-token'] || req.get('x-access-token');
+
         if (!token) {
             return res.status(401)
                 .json({ message: 'Unauthorized, JWT token is require' });
