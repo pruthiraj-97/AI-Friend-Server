@@ -1,19 +1,35 @@
-const jwt=require('jsonwebtoken')
+const JWT=require('jsonwebtoken')
 async function isAuthenticate(req,res,next){
-    const token = req.headers['x-access-token'] || req.get('x-access-token');
-
-        if (!token) {
-            return res.status(401)
-                .json({ message: 'Unauthorized, JWT token is require' });
+    try{
+            const token=req.headers['x-access-token']
+            if(!token){
+                return res.status(401).json({
+                    data:null,
+                    error:{
+                        message:"user is not authenticated"
+                    }
+                })
+            }
+            console.log("token is ", token)
+            const payload=JWT.verify(token,process.env.JWT_SECRET)
+            if(!payload){
+                return res.status(401).json({
+                    data:null,
+                    error:{
+                        message:"user is not authenticated"
+                    }
+                })
+            }
+            req.user=payload
+            next()
+} catch (error) {
+    return res.status(401).json({
+        data:null,
+        error:{
+            message:"user is not authenticated" +error
         }
-        try {
-            const decoded = jwt.verify(auth, process.env.JWT_SECRET);
-            req.user = decoded;
-            next();
-        } catch (err) {
-            return res.status(401)
-                .json({ message: 'Unauthorized, JWT token wrong or expired' });
-        }
+    })
+}
     }
 
 module.exports={isAuthenticate}
