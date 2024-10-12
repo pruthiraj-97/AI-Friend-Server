@@ -1,25 +1,17 @@
 const jwt=require('jsonwebtoken')
 async function isAuthenticate(req,res,next){
-    try {
         const token=req.header('x-access-token')
-    if(!token){
-        return res.status(401).json({error:"please authenticate using a valid token"})
-    }
-    
-    const payload=jwt.verify(token,process.env.JWT_SECRET,(error,decoded))   
-    if(!payload){
-        return res.status(401).json({
-            message:'user is authorize'
-        })
-    }
-    req.user=payload
-    next()
-    } catch (error) {
-        return res.status(401).json({
-            status:401,
-            success:false,
-            message:'Token Expair '+error
-        })
+        if (!token) {
+            return res.status(401)
+                .json({ message: 'Unauthorized, JWT token is require' });
+        }
+        try {
+            const decoded = jwt.verify(auth, process.env.JWT_SECRET);
+            req.user = decoded;
+            next();
+        } catch (err) {
+            return res.status(401)
+                .json({ message: 'Unauthorized, JWT token wrong or expired' });
         }
     }
 
