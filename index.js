@@ -13,7 +13,7 @@ app.use(cors({
 app.use('/api/auth/',AuthRouter)
 app.use('/api/conversation/',ConversationRouter)
 app.get('/',(req,res)=>{
-    res.send('well come to AI chat boat server')
+    res.send('well come to gemini fusion')
 })
 app.listen(process.env.PORT,()=>{
     console.log(`server is running on port ${process.env.PORT}`)

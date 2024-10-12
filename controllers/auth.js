@@ -32,7 +32,7 @@ const JWT=require('jsonwebtoken')
             email:user.email
         }
         const token=JWT.sign(payload,process.env.JWT_SECRET,{
-            expiresIn:"1d"
+            expiresIn:'24h'
         })
         return res.status(200).json({
             status:200,
