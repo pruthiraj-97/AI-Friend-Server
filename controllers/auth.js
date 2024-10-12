@@ -31,9 +31,7 @@ const JWT=require('jsonwebtoken')
             id:user._id,
             email:user.email
         }
-        const token=JWT.sign(payload,process.env.JWT_SECRET,{
-            expiresIn:'24h'
-        })
+        const token=JWT.sign(payload,process.env.JWT_SECRET,{ expiresIn: '24h' })
         return res.status(200).json({
             status:200,
             success:true,
